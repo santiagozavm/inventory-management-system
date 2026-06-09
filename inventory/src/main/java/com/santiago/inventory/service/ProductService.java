@@ -30,4 +30,27 @@ public class ProductService {
 
         productRepository.deleteById(id);
     }
+    public List<Product> searchProducts(String keyword) {
+
+        return productRepository.findByNameContainingIgnoreCase(keyword);
+    }
+    public long getTotalProducts() {
+
+        return productRepository.count();
+    }
+    public double getTotalInventoryValue() {
+
+        return productRepository.findAll()
+                .stream()
+                .mapToDouble(product ->
+                        product.getPrice() * product.getStock())
+                .sum();
+    }
+    public long getLowStockProducts() {
+
+        return productRepository.findAll()
+                .stream()
+                .filter(product -> product.getStock() < 5)
+                .count();
+    }
 }

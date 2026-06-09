@@ -33,7 +33,29 @@
     <h1 class="mb-4 text-center">
         Lista de Productos
     </h1>
+    <form th:action="@{/products}" method="get"
+        class="row mb-4">
 
+        <div class="col-md-10">
+
+            <input type="text"
+                name="keyword"
+                th:value="${keyword}"
+                class="form-control"
+                placeholder="Buscar producto...">
+
+        </div>
+
+        <div class="col-md-2 d-grid">
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Buscar
+            </button>
+
+        </div>
+
+    </form>
     <table class="table table-bordered table-hover shadow">
 
         <thead class="table-dark">
