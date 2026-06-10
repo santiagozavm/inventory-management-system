@@ -23,8 +23,13 @@ public class SecurityConfig {
                 .password(passwordEncoder.encode("admin123"))
                 .roles("ADMIN")
                 .build();
+        UserDetails employee = User.builder()
+            .username("employee")
+            .password(passwordEncoder.encode("employee123"))
+            .roles("EMPLOYEE")
+            .build();
 
-        return new InMemoryUserDetailsManager(admin);
+        return new InMemoryUserDetailsManager(admin, employee);
     }
 
     @Bean
@@ -38,9 +43,22 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().authenticated()
+
+                        .requestMatchers("/login")
+                        .permitAll()
+
+                        .requestMatchers("/products/delete/**")
+                        .hasRole("ADMIN")
+
+                        .anyRequest()
+                        .authenticated()
                 )
-                .formLogin(Customizer.withDefaults())
+
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .permitAll()
+                )
+
                 .logout(Customizer.withDefaults());
 
         return http.build();

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -17,11 +19,27 @@
         <a class="navbar-brand" href="/">
             Inventory System
         </a>
+        <span class="text-white me-3">
+            Bienvenido,
+            <span sec:authentication="name"></span>
+        </span>
 
-        <div>
-            <a class="btn btn-outline-light" href="/products/new">
+        <div class="d-flex gap-2">
+
+            <a class="btn btn-outline-light"
+            href="/products/new">
                 Nuevo Producto
             </a>
+
+            <form th:action="@{/logout}" method="post">
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    Cerrar Sesión
+                </button>
+
+            </form>
+
         </div>
 
     </div>
@@ -89,10 +107,14 @@
                     Editar
                 </a>
 
-                <a th:href="@{/products/delete/{id}(id=${product.id})}"
-                   class="btn btn-danger btn-sm">
-                    Eliminar
-                </a>
+                <div sec:authorize="hasRole('ADMIN')">
+
+                    <a th:href="@{/products/delete/{id}(id=${product.id})}"
+                    class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+
+                </div>
 
             </td>
 

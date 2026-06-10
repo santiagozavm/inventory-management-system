@@ -18,12 +18,24 @@
         <a class="navbar-brand" href="/">
             Inventory System
         </a>
-
-        <div>
+        <span class="text-white me-3">
+            Bienvenido,
+            <span sec:authentication="name"></span>
+        </span>
+        <div class="d-flex gap-2">
             <a class="btn btn-outline-light" href="/products">
                 Productos
             </a>
+            <form th:action="@{/logout}" method="post">
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    Cerrar Sesión
+                </button>
+
+            </form>
         </div>
+        
 
     </div>
 
