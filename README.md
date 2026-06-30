@@ -245,11 +245,11 @@ src/main/java/com/santiago/inventory
 
 GitHub:
 
-https://github.com/TU-USUARIO
+https://github.com/santiagozavm
 
 LinkedIn:
 
-(Tu perfil)
+https://www.linkedin.com/in/santiago-zavala-43596a3a7/
 
 ---
 
