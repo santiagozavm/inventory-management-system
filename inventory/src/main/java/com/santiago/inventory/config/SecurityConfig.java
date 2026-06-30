@@ -29,6 +29,9 @@ public class SecurityConfig {
                         .requestMatchers("/products/delete/**")
                         .hasRole("ADMIN")
 
+                        .requestMatchers("/users/**")
+                        .hasRole("ADMIN")
+
                         .anyRequest()
                         .authenticated()
                 )

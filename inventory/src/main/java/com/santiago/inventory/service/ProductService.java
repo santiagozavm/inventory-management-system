@@ -53,4 +53,7 @@ public class ProductService {
                 .filter(product -> product.getStock() < 5)
                 .count();
     }
+    public long countProducts() {
+        return productRepository.count();
+    }
 }

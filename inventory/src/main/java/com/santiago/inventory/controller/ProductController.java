@@ -1,6 +1,8 @@
 package com.santiago.inventory.controller;
 
 import com.santiago.inventory.service.ProductService;
+import com.santiago.inventory.service.UserService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +16,17 @@ import org.springframework.validation.BindingResult;
 
 import com.santiago.inventory.model.Product;
 
-
 @Controller
 public class ProductController {
 
     private final ProductService productService;
+    private final UserService userService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService,
+                            UserService userService) {
+
         this.productService = productService;
+        this.userService = userService;
     }
 
     @GetMapping("/products")
@@ -40,6 +45,12 @@ public class ProductController {
         }
 
         model.addAttribute("keyword", keyword);
+        
+        model.addAttribute("totalProducts",
+                productService.countProducts());
+
+        model.addAttribute("totalUsers",
+                userService.countUsers());
 
         return "products";
     }
