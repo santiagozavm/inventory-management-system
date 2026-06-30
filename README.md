@@ -43,37 +43,37 @@ Este proyecto fue desarrollado con el objetivo de demostrar conocimientos en el 
 
 ## Login
 
-![Login](images/login.png)
+![Login](inventory/images/login.png)
 
 ---
 
 ## Dashboard
 
-![Dashboard](images/dashboard.png)
+![Dashboard](inventory/images/dashboard.png)
 
 ---
 
 ## Gestión de Productos
 
-![Productos](images/products.png)
+![Productos](inventory/images/products.png)
 
 ---
 
 ## Crear Producto
 
-![Crear Producto](images/create-product.png)
+![Crear Producto](inventory/images/create-product.png)
 
 ---
 
 ## Gestión de Usuarios
 
-![Usuarios](images/users.png)
+![Usuarios](inventory/images/users.png)
 
 ---
 
 ## Crear Usuario
 
-![Crear Usuario](images/create-user.png)
+![Crear Usuario](inventory/images/create-user.png)
 
 ---
 
